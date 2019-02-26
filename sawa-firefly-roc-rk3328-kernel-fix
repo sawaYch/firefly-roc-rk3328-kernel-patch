@@ -1,0 +1,44 @@
+diff --git a/drivers/net/usb/Makefile b/drivers/net/usb/Makefile
+index b5f04068dbe4..84b685ce1b2b 100644
+--- a/drivers/net/usb/Makefile
++++ b/drivers/net/usb/Makefile
+@@ -39,3 +39,5 @@ obj-$(CONFIG_USB_VL600)		+= lg-vl600.o
+ obj-$(CONFIG_USB_NET_QMI_WWAN)	+= qmi_wwan.o
+ obj-$(CONFIG_USB_NET_CDC_MBIM)	+= cdc_mbim.o
+ obj-$(CONFIG_USB_NET_CH9200)	+= ch9200.o
++ccflags-y += -Wno-misleading-indentation
++
+diff --git a/drivers/net/wireless/rockchip_wlan/rkwifi/bcmdhd/Makefile b/drivers/net/wireless/rockchip_wlan/rkwifi/bcmdhd/Makefile
+index a24a0826fd71..940baae0c022 100644
+--- a/drivers/net/wireless/rockchip_wlan/rkwifi/bcmdhd/Makefile
++++ b/drivers/net/wireless/rockchip_wlan/rkwifi/bcmdhd/Makefile
+@@ -12,7 +12,7 @@ CONFIG_BCMDHD_AG := y
+ #CONFIG_DHD_USE_STATIC_BUF := y
+ CONFIG_VTS_SUPPORT := y
+ 
+-DHDCFLAGS = -Wall -Wstrict-prototypes -Dlinux -DBCMDRIVER -DSDTEST       \
++DHDCFLAGS = -Wall -Wno-misleading-indentation -Wno-tautological-compare -Wstrict-prototypes -Dlinux -DBCMDRIVER -DSDTEST       \
+ 	-DBCMDONGLEHOST -DUNRELEASEDCHIP -DBCMDMA32 -DBCMFILEIMAGE            \
+ 	-DDHDTHREAD -DDHD_DEBUG -DSHOW_EVENTS -DBCMDBG -DGET_OTP_MAC_ENABLE   \
+ 	-DWIFI_ACT_FRAME -DARP_OFFLOAD_SUPPORT -DSUPPORT_PM2_ONLY             \
+diff --git a/drivers/net/wireless/rockchip_wlan/rtl8188eu/Makefile b/drivers/net/wireless/rockchip_wlan/rtl8188eu/Makefile
+index d3a60ea47ed9..e075f69cf3f3 100644
+--- a/drivers/net/wireless/rockchip_wlan/rtl8188eu/Makefile
++++ b/drivers/net/wireless/rockchip_wlan/rtl8188eu/Makefile
+@@ -15,6 +15,7 @@ EXTRA_CFLAGS += -Wno-unused-parameter
+ EXTRA_CFLAGS += -Wno-unused-function
+ EXTRA_CFLAGS += -Wno-unused
+ #EXTRA_CFLAGS += -Wno-uninitialized
++EXTRA_CFLAGS += -Wno-misleading-indentation -Wno-tautological-compare
+ 
+ GCC_VER_49 := $(shell echo `$(CC) -dumpversion | cut -f1-2 -d.` \>= 4.9 | bc )
+ ifeq ($(GCC_VER_49),1)
+diff --git a/net/rfkill/Makefile b/net/rfkill/Makefile
+index 5f99cff74601..d868a04d4f6e 100644
+--- a/net/rfkill/Makefile
++++ b/net/rfkill/Makefile
+@@ -8,3 +8,4 @@ obj-$(CONFIG_RFKILL)		+= rfkill.o
+ obj-$(CONFIG_RFKILL_REGULATOR)	+= rfkill-regulator.o
+ obj-$(CONFIG_RFKILL_GPIO)	+= rfkill-gpio.o
+ obj-y				+= rfkill-wlan.o rfkill-bt.o
++ccflags-y += -Wno-misleading-indentation
